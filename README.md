@@ -1,1 +1,1 @@
-# event2go
+# Event2go demo app
