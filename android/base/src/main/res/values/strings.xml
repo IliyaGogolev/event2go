@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Base</string>
+    <string name="empty"></string>
+    <!-- recycler view -->
+    <string name="default_empty_list_string">Nothing here!</string>
+
+    <string name="error_unexpected">We’re sorry. Something went wrong. Please try again.</string>
+
+</resources>

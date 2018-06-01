@@ -1,0 +1,194 @@
+apply plugin: 'com.android.library'
+apply plugin: 'io.fabric'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+kapt {
+//    generateStubs = true
+}
+
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        // These docs use an open ended version so that our plugin
+        // can be updated quickly in response to Android tooling updates
+
+        // We recommend changing it to the latest version from our changelog:
+        // https://docs.fabric.io/android/changelog.html#fabric-gradle-plugin
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+crashlytics { instantAppSupport true }
+
+android {
+
+    def androidVersions = rootProject.ext.android
+
+    compileSdkVersion androidVersions.compileSdkVersion
+    buildToolsVersion androidVersions.buildToolsVersion
+
+    dataBinding {
+        enabled = true
+    }
+
+    defaultConfig {
+
+        minSdkVersion androidVersions.minSdkVersion
+        targetSdkVersion androidVersions.targetSdkVersion
+
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
+}
+
+
+dependencies {
+
+    def commonDependencies = rootProject.ext.commonDependencies
+//    def developmentDependencies = rootProject.ext.developmentDependencies
+//    def commonTestDependencies = rootProject.ext.commonTestDependencies
+
+//    dataBinding {
+//        enabled = true
+//    }
+//    kapt commonDependencies.dataBindingCompiler
+
+    // kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    // Android
+    api commonDependencies.supportAppCompatV7
+    api commonDependencies.supportV13
+    api commonDependencies.supportAnnotation
+    api commonDependencies.supportCardView
+    api commonDependencies.supportRecyclerView
+    api commonDependencies.constraintLayout
+    api commonDependencies.supportDesign
+
+    implementation 'com.googlecode.libphonenumber:libphonenumber:5.5'
+
+    // parse
+    implementation commonDependencies.parseAndroid
+    implementation commonDependencies.parseInterceptors
+
+    // Networking Retrofit (not in use right now)
+    api commonDependencies.retrofit2
+    api commonDependencies.retrofitRxAdapter
+    api commonDependencies.retrofitConverter
+    api commonDependencies.okHttpInterceptor
+
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+}
+//
+/*
+//
+def siteUrl = 'https://github.com/korkag/Base'      // Homepage URL of the library
+def gitUrl = 'https://github.com/korkag/Base.git'   // Git repository URL
+group = "com.korkatopia.base"                                        // Maven Group ID for the artifact
+
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "base"
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}
+
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+
+                // Add your description here
+                name 'Base RecycleView. Uses natural connection between View Holder and its view type which is id of layout'
+//                url siteUrl
+
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'korkag'
+                        name 'Iliya Gug'
+                        email 'korkag@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+//task javadoc(type: Javadoc) {
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//}
+//
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//    options.encoding = 'UTF-8'
+//}
+
+artifacts {
+//    archives javadocJar
+    archives sourcesJar
+}
+
+*/

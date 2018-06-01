@@ -1,0 +1,15 @@
+<resources>
+
+    <dimen name="margin_tiny">6dp</dimen>
+    <dimen name="margin_small">14dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_normal">20dp</dimen>
+    <dimen name="margin_big">30dp</dimen>
+    <dimen name="list_item_avatar_size">40dp</dimen>
+
+    <dimen name="text_size_small">10dp</dimen>
+    <dimen name="text_size_medium">12dp</dimen>
+    <dimen name="text_size_normal">14dp</dimen>
+    <dimen name="text_size_large">16dp</dimen>
+
+</resources>

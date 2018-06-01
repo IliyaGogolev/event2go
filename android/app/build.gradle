@@ -1,0 +1,148 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'io.fabric'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 27
+
+    def androidVersions = rootProject.ext.android
+
+    compileSdkVersion androidVersions.compileSdkVersion
+    buildToolsVersion androidVersions.buildToolsVersion
+
+
+    dataBinding {
+        enabled = true
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    defaultConfig {
+        applicationId "com.event2go.app"
+        minSdkVersion androidVersions.minSdkVersion
+        targetSdkVersion androidVersions.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        // Enabling multidex support.
+        multiDexEnabled true
+
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+
+        debug {
+            debuggable true
+            // Specifies a sorted list of fallback build types that the
+            // plugin should try to use when a dependency does not include a
+            // "staging" build type. You may specify as many fallbacks as you
+            // like, and the plugin selects the first build type that's
+            // available in the dependency.
+            matchingFallbacks = ['release']
+        }
+    }
+
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
+
+}
+
+dependencies {
+    def commonDependencies = rootProject.ext.commonDependencies
+    def commonTestDependencies = rootProject.ext.commonTestDependencies
+
+    // RxJava
+    implementation commonDependencies.rxJava2
+    implementation commonDependencies.rxAndroid
+
+    api commonDependencies.multidex
+    // Android
+    api commonDependencies.supportAppCompatV7
+    api commonDependencies.supportV13
+    api commonDependencies.supportAnnotation
+    api commonDependencies.supportCardView
+    api commonDependencies.supportRecyclerView
+    api commonDependencies.constraintLayout
+    api commonDependencies.supportDesign
+
+    // Gson
+    api commonDependencies.gson
+
+    implementation('com.facebook.android:facebook-android-sdk:4.5.0') {
+        exclude module: 'bolts-android'
+    }
+    // Glide
+    implementation(commonDependencies.glide) {
+        exclude group: 'com.android.support'
+        exclude group: "com.squareup.okhttp:"
+    }
+
+
+    implementation 'de.hdodenhof:circleimageview:1.3.0'
+    implementation 'fr.avianey.com.viewpagerindicator:library:2.4.1@aar'
+    // ical4j
+    implementation('org.mnode.ical4j:ical4j:1.0.5') {
+        exclude group: 'commons-logging', module: 'commons-logging'
+    }
+    implementation 'backport-util-concurrent:backport-util-concurrent:3.1'
+
+    implementation 'commons-lang:commons-lang:2.6'
+    // parse
+    implementation commonDependencies.parseAndroid
+    implementation commonDependencies.parseInterceptors
+    // Module dependency on ParseUI libraries sources
+    api 'com.parse:parseui-login-android:0.0.2'
+    api 'com.parse:parseui-widget-android:0.0.2'
+    // Uncomment if using Facebook or Twitter Login (optional Maven dependency)
+    implementation ('com.facebook.android:facebook-android-sdk:4.6.0') {
+        exclude group: 'com.parse.bolts', module: 'bolts-android'
+    }
+    // compile 'com.parse:parsetwitterutils-android:1.10.3'
+
+//    api 'com.parse.bolts:bolts-android:1.2.1'
+    //    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    // Architecture components
+    // issue using with multidex https://issuetracker.google.com/issues/68296658
+    api commonDependencies.archLifecycleRuntime
+    api commonDependencies.archLifecycleExtensions
+    api commonDependencies.archLifecycleReactiveStreams
+    annotationProcessor commonDependencies.archLifecycleCompiler
+    testAnnotationProcessor commonDependencies.archLifecycleCompiler
+
+    // Dagger 2
+    api commonDependencies.dagger2
+    api commonDependencies.dagger2Support
+    implementation commonDependencies.dagger2Android
+    kapt commonDependencies.dagger2Compiler
+
+    // Unit testing
+    testImplementation commonTestDependencies.junit
+    testImplementation commonTestDependencies.assertj
+    testImplementation commonTestDependencies.mockito
+    testImplementation commonTestDependencies.archTest
+    testImplementation commonTestDependencies.robolectric
+    androidTestImplementation commonTestDependencies.androidTestImplementation
+
+    api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    implementation project(':base')
+}

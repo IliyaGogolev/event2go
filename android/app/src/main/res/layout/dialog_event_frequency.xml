@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+        <import type="java.util.Date" />
+        <import type="com.event2go.base.utils.DateUtils"/>
+
+        <variable
+            name="model"
+            type="com.event2go.app.features.event.presentation.dialog.EventFrequencyDialogFragment.ViewModel" />
+
+        <variable
+            name="untilDate"
+            type="Date" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/margin_normal"
+        android:paddingLeft="@dimen/margin_normal"
+        android:paddingRight="@dimen/margin_normal"
+        android:focusableInTouchMode="true">
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/frequency_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            bind:strings="@{model.frequencyStrings}"
+            bind:selectedPosition="@{model.frequencySelectedPosition}"
+            android:spinnerMode="dropdown"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_normal"
+            >
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/until_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="6dp"
+                android:paddingRight="6dp"
+                bind:selectedPosition="@{untilDate == null ? 0 : 1}"
+                bind:strings="@{model.frequencyUntilStrings}"
+                android:spinnerMode="dropdown"
+                />
+
+            <TextView
+                android:id="@+id/until_date"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:gravity="center|left"
+                android:minWidth="120dp"
+                android:text="@{DateUtils.getDateString(untilDate)}"
+                tools:text="Sunday, Dec 10, 2015"
+                android:textColor="@android:color/black"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

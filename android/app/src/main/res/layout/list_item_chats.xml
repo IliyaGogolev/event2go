@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="chat"
+            type="com.event2go.app.features.chat.data.Chat"/>
+        <import type="com.event2go.base.utils.DateUtils"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_tiny">
+
+            <RelativeLayout
+                style="@style/Widget.CardContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/avatar"
+                    />
+
+                <TextView
+                    android:id="@+id/nameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/avatar"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="25dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:text="@{chat.name}"
+                    tools:text="Ivan Ivanov"/>
+
+                <TextView
+                    android:id="@+id/lastMsgTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/avatar"
+                    android:layout_below="@+id/nameTextView"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:text="@{chat.lastMessage}"
+                    tools:text="I am looking for you"/>
+
+                <TextView
+                    android:id="@+id/lastMsgTimeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="25dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:text="@{DateUtils.getTimeString(chat.lastTime)}"
+                    tools:text="12:49"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</layout>

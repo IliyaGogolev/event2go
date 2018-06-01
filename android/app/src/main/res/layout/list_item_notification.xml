@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="notification"
+            type="com.event2go.app.features.notifications.data.AppNotification" />
+    </data>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_tiny">
+
+        <include
+            layout="@layout/include_list_item_notification"
+            bind:notification="@{notification}" />
+
+    </android.support.v7.widget.CardView>
+
+</layout>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="event"
+            type="com.event2go.app.features.event.data.Event" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ScrollView
+            android:id="@+id/ScrollView01"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:focusable="true"-->
+            <!--android:focusableInTouchMode="true"-->
+            <!--android:orientation="vertical">-->
+
+
+            <LinearLayout
+                android:id="@+id/container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include
+                    layout="@layout/include_event_time_with_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    bind:event="@{event}"/>
+
+
+                <include layout="@layout/create_event_separator" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:layout_marginRight="@dimen/margin_normal"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_location_on_black_24dp" />
+
+
+                    <TextView
+                        android:id="@+id/event_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_normal"
+                        android:minHeight="18dp"
+                        android:minWidth="200dp"
+                        android:text="@{event.location}"
+                        tools:text="North Hollywood park, Los Angeles, CA"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+
+                </LinearLayout>
+
+                <include layout="@layout/create_event_separator" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:layout_marginRight="@dimen/margin_normal"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_group_black_24dp" />
+
+
+                    <TextView
+                        android:id="@+id/guests_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_normal"
+                        android:minHeight="18dp"
+                        android:minWidth="200dp"
+                        android:text="@{@plurals/event_users(event.users.size(), event.users.size())}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                </LinearLayout>
+
+
+                <include layout="@layout/include_event_profile_users"
+                    android:id="@+id/going"
+                    bind:title="@{@string/event_profile_going(event.counts.coming)}"
+                    />
+
+                <include layout="@layout/include_event_profile_users"
+                    android:id="@+id/notGoing"
+                    bind:title="@{@string/event_profile_not_going(event.counts.notComing)}"
+                    />
+
+
+                <include layout="@layout/include_event_profile_users"
+                    android:id="@+id/tentative"
+                    bind:title="@{@string/event_profile_tentative(event.counts.tentative)}"
+                    />
+
+                <include layout="@layout/include_event_profile_users"
+                    android:id="@+id/needsAction"
+                    bind:title="@{@string/event_profile_needs_action(event.counts.needsAction)}"
+                    />
+
+                <!---->
+
+
+                <!--</LinearLayout>-->
+                <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:id="@+id/recyclerView_going"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+                <!-- dummy button to fill is going bar in the bottom -->
+                <Button
+                    style="?android:attr/actionButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+            <!--<android.support.design.widget.FloatingActionButton-->
+            <!--android:id="@+id/fab"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="end|bottom"-->
+            <!--android:layout_margin="@dimen/margin_medium"-->
+            <!--android:src="@drawable/ic_chat_black_24dp" />-->
+
+
+            <!--<include layout="@layout/create_event_separator" />-->
+
+            <!--</LinearLayout>-->
+
+
+        </ScrollView>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bg_is_going"
+            android:paddingLeft="@dimen/margin_tiny"
+
+            >
+
+            <include
+                layout="@layout/include_question_bar"
+                android:id="@+id/include_question_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                bind:title="@{@string/question_going}"
+                bind:visibility="@{event.showQuestionBar}"
+                />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

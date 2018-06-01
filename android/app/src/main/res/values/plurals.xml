@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>>
+
+    <plurals name="event_users">
+        <item quantity="zero">No Users</item>
+        <item quantity="one">1 User</item>
+        <item quantity="other">%1$s Users</item>
+    </plurals>
+
+</resources>

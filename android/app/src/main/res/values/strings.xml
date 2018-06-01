@@ -1,0 +1,164 @@
+<resources>
+    <string name="app_name">Event2go</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="empty"></string>
+    <string name="logo">Logo</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="facebook_app_id">439531752874843</string>
+    <string-array name="my_facebook_permissions">
+        <item>public_profile</item>
+        <item>user_friends</item>
+    </string-array>
+
+    <string name="gender">Gender</string>
+    <string name="email">Email</string>
+    <string name="email_address">Email Address</string>
+
+
+    <!-- Navigation view -->
+    <string name="events">Events</string>
+    <string name="nav_view_create_event">Create</string>
+    <string name="nav_view_find_event">Find</string>
+    <string name="nav_view_invite_user">Invite</string>
+    <string name="nav_notifications">Notifications</string>
+    <string name="nav_view_settings">Settings</string>
+    <string name="nav_view_signout">Sign Out</string>
+
+    <!-- Create event -->
+    <string name="enter_title">Enter Title</string>
+    <string name="enter_location">Enter Location</string>
+    <string name="search_event_title">Search</string>
+    <string name="search_user_hint">Search user ...</string>
+    <string name="no_data">There is no data!</string>
+    <string name="no_events">No events</string>
+
+    <string name="create_event">New Event</string>
+
+    <string name="event">Event</string>
+    <string name="event_repeat_non">Don\'t repeat</string>
+    <string name="event_repeat_daily">Every day</string>
+    <string name="event_repeat_weekly">Repeats Weekly</string>
+    <string name="event_repeat_monthly">Repeats Monthly</string>
+    <string name="location">Location</string>
+    <string name="time_confirm">Reminder To Confirm</string>
+    <string name="repeat_messages">%s before</string>
+    <string name="until">until</string>
+    <string name="on">on</string>
+    <!-- Invite dialog -->
+    <string name="invite_user_title">Invite</string>
+    <string name="invite_user_into_event">Do you want to invite %1$s to \"%2$s\" event?</string>
+    <string name="invite_user_success_toast">Invite sent to %s</string>
+    <string name="invite_user_error_toast">Errors occurred during sending invite to %s</string>
+    <string name="invite_user_notification_text">%1$s invites you to %2$s event</string>
+
+    <!-- Invite -->
+    <string name="invitation">Invitation</string>
+
+    <!-- Unit -->
+    <string name="hour">Hour</string>
+    <string name="day">Day</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+    <!-- Units -->
+    <string name="hours">Hours</string>
+    <string name="days">Days</string>
+    <string name="weeks">Weeks</string>
+    <string name="months">Months</string>
+
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="back">Back</string>
+    <string name="send">Send</string>
+    <string name="ok">Ok</string>
+    <string name="action_edit">Edit</string>
+
+    <string name="create_event_rsvp_alarm">RSVP reminder %s before</string>
+    <string name="error_enter_title">Enter title</string>
+    <string name="nav_view_events">My Events</string>
+    <string name="action_delete">Delete</string>
+    <string name="event_deleted_succeed">Event has been deleted</string>
+    <string name="event_deleted_failed">Failed, try again later</string>
+    <string name="event_delete_dialog_message">Delete event?</string>
+    <string name="event_edit">Edit event</string>
+    <string name="main_title">Events</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="event_add_param">Add parameter</string>
+    <string name="event_add_instance_param">Add instance parameter</string>
+    <string name="user_add_param">Add user parameter</string>
+    <string name="user_add_instance_param">Add user instance parameter</string>
+    <string name="add_param_value">Value</string>
+    <string name="add_param_name">Name</string>
+
+    <string name="question_going">Going?</string>
+    <string name="question_accept">Accept?</string>
+
+    <string name="event_profile_needs_action">Needs Action (%1$s)</string>
+    <string name="event_profile_going">Going (%1$s)</string>
+    <string name="event_profile_not_going">Not Going(%1$s)</string>
+    <string name="event_profile_tentative">Maybe (%1$s)</string>
+
+    <!-- Notifications -->
+    <string name="notification_invite_content">invited you to</string>
+    <!--<string name="notification_invite_suffix">event</string>-->
+    <string name="done">done</string>
+    <string name="nav_people">People</string>
+    <string name="nav_events">Events</string>
+    <string name="nav_conversations">Messages</string>
+    <string name="nav_view_open_conversation">Open messages</string>
+    <string name="messages">Messages</string>
+    <string name="chat">Chat</string>
+    <string name="contacts">Contacts</string>
+
+    <string name="continue_text">Continue</string>
+    <string name="mute_notifications">Mute Notifications</string>
+    <string name="settings">SETTINGS</string>
+
+    <!-- Login -->
+    <string name="signup_enter_phone_number">Please enter your phone number to log in:</string>
+    <string name="signup_enter_code">It was sent in an SMS message to %1$s\nEnter the 4-digit confirmation code:</string>
+    <string name="signup_enter_code_1">Enter Code</string>
+    <string name="signup_with_another_account">Sign in with another user</string>
+    <!--<string name="signup_enter_code">It was sent in an SMS message \nEnter the 4-digit confirmation code:</string>-->
+
+    <string name="welcome">Welcome</string>
+    <string name="lets_start">Let\'s start...</string>
+
+    <!-- Hints -->
+    <string name="hint_phone_number">Your phone #</string>
+    <string name="hint_sms_code">Your code</string>
+
+    <!-- Error -->
+    <string name="error">Error</string>
+    <string name="error_network_title">Network Error</string>
+    <string name="error_network_message">Network Error! Please try again later</string>
+    <string name="error_invalid_phone">Please enter a valid Phone Number</string>
+    <string name="error_no_name">Please enter your name</string>
+    <string name="error_signup_code_lenght">You must enter the 4 digit code texted to your phone number.</string>
+    <string name="error_signup_sending_code">An error occurred during sending code. Please try again</string>
+    <string name="sign_up_select_country">Select country</string>
+
+    <string name="send_message">Send</string>
+    <string name="hint_type_message">Type to compose</string>
+    <string name="phone_num_verification">Phone Number Verification</string>
+    <string name="is_correct_number">Is this your correct number %1$s?  An SMS with your access code will be sent to this number</string>
+
+    <string name="error_something_went_wrong">Something went wrong.  Please try again.</string>
+    <!--&lt;!&ndash; recycler view &ndash;&gt;-->
+    <!--<string name="default_empty_list_string">Nothing here!</string>-->
+
+</resources>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.event2go.app.features.event.data.RecurUtils" />
+
+        <variable
+            name="event"
+            type="com.event2go.app.features.event.data.Event" />
+
+        <variable
+            name="eventViewModel"
+            type="com.event2go.app.features.event.presentation.EventViewModel" />
+    </data>
+
+    <ScrollView
+        android:id="@+id/ScrollView01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:hint="@string/enter_title"
+                android:singleLine="true"
+                android:text="@{event.summary}"
+                tools:text="Sunday Soccer" />
+
+            <include
+                android:id="@+id/include_event_time"
+                layout="@layout/include_event_time"
+                bind:event="@{event}" />
+
+            <include layout="@layout/create_event_separator" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_replay_black_48dp" />
+
+
+                <TextView
+                    android:id="@+id/event_repeat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:minHeight="18dp"
+                    android:minWidth="200dp"
+                    android:text="@{event.frequency != 0 ? event.frequencyText : @string/event_repeat_non}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    tools:text="Weekly" />
+
+
+            </LinearLayout>
+
+            <include layout="@layout/create_event_separator" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_location_on_black_24dp" />
+
+
+                <TextView
+                    android:id="@+id/event_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:minHeight="18dp"
+                    android:minWidth="200dp"
+                    android:text="@{event.location}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    tools:text="North Hollywood park, Los Angeles, CA" />
+
+
+            </LinearLayout>
+
+            <include layout="@layout/create_event_separator" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_notifications_black_24dp" />
+
+
+                <TextView
+                    android:id="@+id/event_notification_confirm_presence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:minHeight="18dp"
+                    android:minWidth="200dp"
+                    android:text="@{eventViewModel.rsvmReminderAlertDuration}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+
+            </LinearLayout>
+
+            <include layout="@layout/create_event_separator" />
+
+
+            <!--<include-->
+            <!--android:id="@+id/event_add_global_params"-->
+            <!--layout="@layout/include_add_parameter"-->
+            <!--bind:title="@{@string/event_add_param}" />-->
+
+
+            <!--<include-->
+            <!--android:id="@+id/event_add_instance_params"-->
+            <!--layout="@layout/include_add_parameter"-->
+            <!--bind:title="@{@string/event_add_instance_param}"-->
+            <!--bind:visible="@{eventViewModel.isVisibleAddInstanceParam}"-->
+            <!--/>-->
+
+            <!--<include-->
+            <!--android:id="@+id/user_add_params"-->
+            <!--layout="@layout/include_add_parameter"-->
+            <!--bind:title="@{@string/user_add_param}"-->
+            <!--/>-->
+
+            <!--<include-->
+            <!--android:id="@+id/user_add_instance_params"-->
+            <!--layout="@layout/include_add_parameter"-->
+            <!--bind:title="@{@string/user_add_instance_param}"-->
+            <!--bind:visible="@{eventViewModel.isVisibleAddInstanceParam}"-->
+            <!--/>-->
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

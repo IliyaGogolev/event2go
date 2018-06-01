@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="notification"
+            type="com.event2go.app.features.notifications.data.AppNotification" />
+
+        <variable
+            name="invite"
+            type="com.event2go.app.features.event.data.Invite" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/ScrollView01"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:layout_above="@+id/bottom_container"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include
+                    layout="@layout/include_list_item_notification"
+                    bind:notification="@{notification}" />
+
+                <!--<android.support.v7.widget.AppCompatButton-->
+                    <!--style="@style/RedButtonStyle"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/accept" />-->
+
+                <!--
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/avatar"
+                        android:layout_width="50dip"
+                        android:layout_height="50dip"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/avatar"
+                        bind:imageUrl="@{invite.userInvitedBy.avatarUrl}"
+                        bind:placeHolder="@{@drawable/avatar}" />
+
+                    <TextView
+                        android:id="@+id/inviteText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="10dp"
+                        android:text="@{invite.summary}"
+                        android:textColor="#333"
+                        android:textSize="18sp"
+                        tools:text="Ivanov invites you to event Sunday Soccer" />
+                </LinearLayout>
+
+
+
+                            -->
+                <include layout="@layout/create_event_separator" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_replay_black_48dp" />
+
+
+                    <TextView
+                        android:id="@+id/event_repeat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_normal"
+                        android:minHeight="18dp"
+                        android:minWidth="200dp"
+                        android:text='@{invite.event.frequency != 0 ? invite.event.frequencyText : ""}'
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        tools:text="Weekly" />
+
+                </LinearLayout>
+
+                <include layout="@layout/create_event_separator" />
+
+                <include
+                    layout="@layout/include_event_time"
+                    bind:event="@{invite.event}" />
+
+                <include layout="@layout/create_event_separator" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_location_on_black_24dp" />
+
+
+                    <TextView
+                        android:id="@+id/event_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_normal"
+                        android:minHeight="18dp"
+                        android:minWidth="200dp"
+                        android:text='@{invite.event != null ? invite.event.location : ""}'
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        tools:text="North Hollywood park, Los Angeles, CA" />
+
+
+                </LinearLayout>
+
+                <include layout="@layout/create_event_separator" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_group_black_24dp" />
+
+                    <TextView
+                        android:id="@+id/guests_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_normal"
+                        android:minHeight="18dp"
+                        android:minWidth="200dp"
+                        android:text='@{invite.event != null ? (@plurals/event_users(invite.event.usersCount, invite.event.usersCount)) : ""}'
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        tools:text="42 people" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:id="@+id/bottom_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <View
+                android:id="@+id/SplitLine_hor1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+
+            <include
+                android:id="@+id/include_question_bar"
+                layout="@layout/include_question_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_tiny"
+                bind:title="@{@string/question_accept}"
+                bind:visibility="@{View.VISIBLE}"
+                />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</layout>

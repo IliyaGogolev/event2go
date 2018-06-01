@@ -1,0 +1,88 @@
+// node install:
+https://nodejs.org/en/download/
+
+// install express:
+npm install express
+
+// mongodb install
+https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
+
+// heroku get logs 
+heroku logs --tail
+
+// heroku - login to instance
+heroku run bash
+
+// run node worker 
+heroku run node worker
+
+// from bash heroku
+npm install -g underscore
+
+// remove local node modules
+rm -rf node_modules;
+
+// run mongodb localy
+mongod --dbpath /Users/iliya/Dev/AndroidSample/Event2go/mongodb/data/db/
+
+// install twilio module
+npm install twilio
+
+https://devcenter.heroku.com/articles/deploying-nodejs
+https://devcenter.heroku.com/articles/deploying-a-parse-server-to-heroku
+
+https://medium.com/@timothy_whiting/setting-up-your-own-parse-server-568ee921333a#.1iy046piv
+
+// mongodb UI 
+https://robomongo.org/download
+
+// mongodb import set of json files
+ls -1 *.json | sed 's/.json$//' | while read col; do 
+    mongoimport -d event2go $col.json; 
+done
+
+ls -1 *.json | sed 's/.json$//' | while read col; do 
+    mongoimport --host localhost --port 27017 --db event2go --file $col.json;
+done
+
+
+
+heroku login
+heroku apps
+
+git remote -v
+; after renaming heroku app
+git remote set-url heroku https://git.heroku.com/event2go.git
+
+heroku addons:create mongolab:sandbox
+heroku config
+
+heroku config:set DATABASE_URI=mongodb://heroku_12zphtkk:pl30a8gie2ed646lj4ph05cad2@ds061325.mongolab.com:61325/heroku_12zphtkk
+heroku config:set APP_ID=MofV8rBJbmoa5QTbmyGt6KjfKHR0AcGZ0OprSAqf
+heroku config:set MASTER_KEY=Ea4JKv504lBVQiw3MXak37hYwsu0aCg7qaMlXxCe
+
+
+
+http://event2go.herokuapp.com/parse
+
+import mongodb
+mongorestore -h ds061325.mongolab.com:61325 -d heroku_12zphtkk -u heroku_12zphtkk -p heroku_12zphtkk <input db directory>
+mongorestore -h ds061325.mongolab.com:61325 -d heroku_12zphtkk -u heroku_12zphtkk -p heroku_12ztkk mongo_data_backup
+
+http://event2go.herokuapp.com/parse/1/functions/hello
+
+curl -X GET \
+  -H "X-Parse-Application-Id: MofV8rBJbmoa5QTbmyGt6KjfKHR0AcGZ0OprSAqf" \
+  -H "X-Parse-Master-Key: Ea4JKv504lBVQiw3MXak37hYwsu0aCg7qaMlXxCe" \
+  -H "X-Parse-Client-Key: xfEBsXSUxr32SMPMzek1rzjvru2slpjOAGKH73kK" \
+  http://localhost:1337/parse/classes/_User
+
+curl -X GET \
+  -H "X-Parse-Application-Id: MofV8rBJbmoa5QTbmyGt6KjfKHR0AcGZ0OprSAqf" \
+  -H "X-Parse-Client-Key: xfEBsXSUxr32SMPMzek1rzjvru2slpjOAGKH73kK" \
+  -H "X-Parse-Session-Token: r:f51d6974c2ea52c4b74f9782c70a9b5d" \
+  http://localhost:1337/parse/classes/_User
+
+
+
+{"users":{"__type":"Pointer","className":"_User","objectId":"7kMAjgbTE4"},"recur_type":{"$ne":0},"recur_end":{"$exists":false}}}

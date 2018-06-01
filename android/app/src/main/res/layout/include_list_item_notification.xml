@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.text.format.DateUtils" />
+        <import type="com.event2go.app.features.notifications.data.AppNotification" />
+        <variable
+            name="notification"
+            type="com.event2go.app.features.notifications.data.AppNotification" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_tiny"
+        android:background="@{notification.status == AppNotification.STATUS_NEW ? @color/bg_notification_new : @color/bg_notification_read}">
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/avatar"
+            bind:imageUrl="@{notification.avatarUrl}"
+            bind:placeHolder="@{@drawable/ic_person_black_48dp}" />
+
+        <TextView
+            android:id="@+id/notification_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dip"
+            android:layout_toRightOf="@+id/avatar"
+            android:maxLines="2"
+            android:textColor="#4e5767"
+            android:textSize="@dimen/text_size_normal"
+            bind:charSequence="@{notification.notificationText}"
+            tools:text="Victor invite you to Soccer event" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/notification_text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dip"
+            android:layout_toRightOf="@+id/avatar"
+            android:maxLines="2"
+            android:textColor="#4e5767"
+            android:textSize="@dimen/text_size_normal"
+            bind:charSequence="@{DateUtils.getRelativeTimeSpanString(notification.createdAt.getTime())}"
+            tools:text="Dec 26 22:03" />
+
+        <ImageView
+            android:id="@+id/user_action_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="6dip"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:layout_marginTop="8dip"
+            android:src="@drawable/ic_arrow_back_white_24dp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+</layout>

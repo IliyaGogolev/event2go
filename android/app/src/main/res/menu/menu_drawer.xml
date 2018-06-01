@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<group android:checkableBehavior="single">-->
+        <!--<item-->
+            <!--android:id="@+id/nav_people"-->
+            <!--android:icon="@drawable/ic_group_black_24dp"-->
+            <!--android:title="@string/nav_people" />-->
+    <!--</group>-->
+    <!--<group android:checkableBehavior="single">-->
+        <!--<item-->
+            <!--android:id="@+id/nav_events"-->
+            <!--android:icon="@drawable/ic_event_black_24dp"-->
+            <!--android:title="@string/nav_events" />-->
+    <!--</group>-->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_conversation"
+            android:icon="@drawable/ic_chat_black_24dp"
+            android:title="@string/nav_conversations" />
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_notifications"
+            android:icon="@drawable/ic_notifications_black_24dp"
+            android:title="@string/nav_notifications" />
+    </group>
+
+    <!--<item-->
+        <!--android:id="@+id/nav_settings"-->
+        <!--android:icon="@drawable/ic_settings_black_24dp"-->
+        <!--android:title="@string/nav_view_settings" />-->
+    <item
+        android:id="@+id/nav_singout"
+        android:icon="@drawable/ic_exit_to_app_black_24dp"
+        android:title="@string/nav_view_signout" />
+</menu>

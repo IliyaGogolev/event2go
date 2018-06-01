@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.Gravity"/>
+        <import type="com.event2go.base.utils.DateUtils" />
+
+        <variable
+            name="message"
+            type="com.event2go.app.features.chat.data.ChatMessage" />
+
+    </data>
+
+        <RelativeLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="@{message.isMe ? Gravity.RIGHT : Gravity.CENTER_VERTICAL}"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_marginRight="@dimen/margin_medium"
+            >
+
+            <LinearLayout
+                android:id="@+id/contentWithBackground"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@{message.isMe ?  @drawable/in_message_bg : @drawable/out_message_bg}"
+                tools:background="@drawable/out_message_bg"
+                >
+
+                <TextView
+                    android:id="@+id/txtMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size_normal"
+                    android:text="@{message.message}"
+                    tools:text="My excellent message!"/>
+
+                <TextView
+                    android:id="@+id/txtInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:maxLines="1"
+                    android:textColor="@android:color/secondary_text_light"
+                    android:textSize="@dimen/text_size_normal"
+                    android:text="@{DateUtils.getChatMessageTime(message.date)}"
+                    tools:text="12:40"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+</layout>

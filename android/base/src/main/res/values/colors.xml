@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="window_background">#FFF5F5F5</color>
+
+    <color name="icon_tint">#63777A</color>
+
+    <!-- text -->
+    <color name="text_dark">#ff63666a</color>
+    <color name="text_action">#ffcf0000</color>
+    <color name="text_hint">#63666a</color>
+    <color name="text_disabled">#dddddd</color>
+
+    <!-- dialog -->
+    <color name="dialog_button">#df002b</color>
+    <color name="dialog_message">#8d8d8d</color>
+
+    <color name="button_color">#26A69A</color>
+    <color name="button_red_text">#ffffff</color>
+    <color name="button_red_normal">#ffcf0000</color>
+    <color name="button_red_pressed">#ff7f0000</color>
+
+    <color name="button_redborder_background_normal">@color/window_background</color>
+    <color name="button_redborder_background_pressed">@color/grey_transparent</color>
+
+    <color name="light_grey">#DDD</color>
+    <color name="grey_lightest">#F9F9F9</color>
+    <color name="grey_medium">#B1B3B0</color>
+    <color name="grey_rich">#63666A</color>
+    <color name="grey_transparent">#a6dddddd</color>
+
+    <color name="dividerColor">#B6B6B6</color>
+
+    <!-- based -->
+    <color name="action_bar_bottom_shadow">#40000000</color>
+    <color name="base_icon_tint">@android:color/white</color>
+
+    <!-- tab -->
+    <color name="tab_text_color">@color/grey_medium</color>
+    <color name="tab_selected_color">@android:color/white</color>
+    <color name="tab_indicator_color">@android:color/white</color>
+
+</resources>

@@ -1,0 +1,7 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true" android:drawable="@color/sign_up_dark"/>
+    <item android:state_focused="true" android:drawable="@color/sing_up_light"/>
+    <item android:drawable="@color/sign_up_dark"/>
+
+</selector>

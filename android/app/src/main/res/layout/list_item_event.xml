@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="com.event2go.app.features.event.data.RecurUtils" />
+        <import type="com.event2go.app.utils.UIUtils" />
+        <variable
+            name="event"
+            type="com.event2go.app.features.event.data.Event" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_tiny"
+            android:layout_marginLeft="@dimen/margin_tiny"
+            android:layout_marginRight="@dimen/margin_tiny"
+            android:layout_marginTop="@dimen/margin_tiny">
+
+            <LinearLayout
+                style="@style/Widget.CardContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
+                android:paddingTop="10dp"
+                >
+                <!--android:background="@{event.repeatType == DurationUnit.DUR_UNIT_NONE ? @color/bg_event: @color/bg_event_recurring}"-->
+                <TextView
+
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{event.summary}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                <include
+                    layout="@layout/include_event_time_with_duration"
+                    bind:event="@{event}"
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_directions_run_black_24dp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_normal"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_done_black_24dp"
+                            android:tint="@android:color/holo_green_light" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="4dp"
+                            android:gravity="center_vertical"
+                            android:text='@{"{" + event.counts.coming + ") "}'
+                            tools:text="(0)"/>
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_normal"
+                            android:src="@drawable/ic_help_outline_black_24dp"
+                            android:tint="@android:color/darker_gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="4dp"
+                            android:text='@{"(" + event.counts.tentative + ") "}'
+                            tools:text="(0)"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_normal"
+                            android:src="@drawable/ic_highlight_off_black_24dp"
+                            android:tint="@android:color/darker_gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="4dp"
+                            android:gravity="center_vertical"
+                            android:text='@{"{" + event.counts.notComing + ") "}'
+                            tools:text="(0)"/>
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_normal"
+                            android:src="@drawable/ic_visibility_off_black_24dp"
+                            android:tint="@android:color/darker_gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="4dp"
+                            android:text='@{"(" + event.counts.needsAction + ") "}'
+                            tools:text="(0)"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/SplitLine_hor1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:background="@android:color/darker_gray" />
+
+
+                <include
+                    android:id="@+id/include_question_bar"
+                    layout="@layout/include_question_bar"
+                    bind:title="@{@string/question_going}"
+                    bind:visibility="@{event.showQuestionBar}"
+                    />
+
+
+            </LinearLayout>
+
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@{UIUtils.getEventPartStatResId(event.currentUserPartStat)}"
+                android:layout_gravity="right"
+                android:layout_margin="@dimen/margin_tiny"/>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</layout>
